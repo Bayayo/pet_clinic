@@ -2,15 +2,172 @@
 
 <html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PET CLINIC</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        background: #f4f7f9;
+        color: #333;
+    }
+
+    header {
+        background: #2c7a7b;
+        color: white;
+        padding: 20px 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 24px;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 25px;
+        font-weight: 500;
+        transition: 0.3s;
+    }
+
+    nav a:hover {
+        color: #a7f3d0;
+    }
+
+    .hero {
+        height: 80vh;
+        background: linear-gradient(rgba(44,122,123,0.7), rgba(44,122,123,0.7)),
+                    url('https://images.unsplash.com/photo-1558788353-f76d92427f16') center/cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+    }
+
+    .hero h2 {
+        font-size: 48px;
+        margin-bottom: 10px;
+    }
+
+    .hero p {
+        font-size: 20px;
+        margin-bottom: 25px;
+    }
+
+    .btn {
+        background: #38b2ac;
+        border: none;
+        padding: 12px 25px;
+        font-size: 16px;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background: #319795;
+    }
+
+    .hero-image {
+        margin-top: 20px;
+        width: 512px;
+        max-width: 90%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 8px 20px rgba(11,111,181,0.12);
+    }
+
+    /* Center text for main content areas */
+    .hero, .section, .card, footer {
+        text-align: center;
+    }
+
+    .section {
+        padding: 60px;
+        text-align: center;
+    }
+
+    .section h3 {
+        margin-bottom: 40px;
+        font-size: 28px;
+    }
+
+    .cards {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .card {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        width: 250px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card h4 {
+        margin-bottom: 10px;
+    }
+
+    footer {
+        background: #2c7a7b;
+        color: white;
+        text-align: center;
+        padding: 15px;
+        margin-top: 40px;
+    }
+</style>
+
+</head>
+
 <body>
 
-  <h2 th:text="#{welcome}">Welcome</h2>
-  <div class="row">
-    <div class="col-md-12">
-      <img class="img-responsive" src="../static/resources/images/pets.png" th:src="@{/resources/images/pets.png}" />
+
+<section class="hero">
+    <h2>Cuidamos a tu mejor amigo</h2>
+    <p>Atención veterinaria profesional y con amor</p>
+    <img class="hero-image" th:src="@{/resources/images/photo-1.jpg}" src="../static/images/photo-1.jpg" alt="Hero Photo" />
+</section>
+
+<section class="section">
+    <h3>Nuestros Servicios</h3>
+    <div class="cards">
+        <div class="card">
+            <h4>Consulta general</h4>
+            <p>Revisión completa para tu mascota.</p>
+        </div>
+        <div class="card">
+            <h4>Vacunación</h4>
+            <p>Protección y prevención de enfermedades.</p>
+        </div>
+        <div class="card">
+            <h4>Cirugía</h4>
+            <p>Procedimientos seguros y especializados.</p>
+        </div>
     </div>
-  </div>
+</section>
+
+<footer>
+    <p>© 2026 PET CLINIC</p>
+</footer>
 
 </body>
+
 
 </html>

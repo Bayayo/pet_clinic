@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'about')}">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Veterinaria Mi Mascota</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background: #2c7a7b;
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+    .cta {
+      background: #f6ad55;
+      color: #fff;
+      padding: 15px 30px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      display: inline-block;
+      margin-top: 20px;
+    }
+    section {
+      padding: 50px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    section h2 {
+      color: #2c7a7b;
+      margin-bottom: 20px;
+    }
+    .servicios ul {
+      list-style: none;
+      padding: 0;
+    }
+    .servicios li {
+      background: #edf2f7;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 5px;
+    }
+    .testimonios blockquote {
+      background: #fff;
+      border-left: 5px solid #2c7a7b;
+      margin: 20px 0;
+      padding: 15px;
+      font-style: italic;
+    }
+    footer {
+      background: #2c7a7b;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    footer a {
+      color: #f6ad55;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Cuidamos a tus mascotas como parte de tu familia</h1>
+    <p>Atención veterinaria profesional, cercana y con corazón mexicano.</p>
+    <a href="#contacto" class="cta">Agenda tu cita hoy</a>
+  </header>
+
+  <section id="quienes-somos">
+    <h2>Quiénes somos</h2>
+    <p>Somos una clínica veterinaria mexicana dedicada al bienestar de tus mascotas. Nuestro equipo de médicos veterinarios cuenta con años de experiencia y una verdadera pasión por los animales. Creemos que cada perro, gato o compañero peludo merece atención personalizada, cariño y los mejores cuidados.</p>
+  </section>
+
+  <section class="servicios">
+    <h2>Qué hacemos</h2>
+    <ul>
+      <li>Consultas generales y especializadas</li>
+      <li>Vacunación y desparasitación</li>
+      <li>Cirugías y procedimientos</li>
+      <li>Estética y baño medicado</li>
+      <li>Urgencias 24/7</li>
+      <li>Venta de alimento y accesorios</li>
+    </ul>
+  </section>
+
+  <section id="porque-elegirnos">
+    <h2>Por qué elegirnos</h2>
+    <p>Tu tranquilidad y la salud de tu mascota son nuestra prioridad. Ofrecemos atención cálida y profesional, instalaciones seguras y modernas, precios justos y transparentes, y un amor genuino por cada animal.</p>
+  </section>
+
+  <section id="ubicacion">
+    <h2>Ubicación</h2>
+    <p>Estamos en el corazón de la Ciudad de México, con fácil acceso y estacionamiento. Ven a conocernos y descubre por qué tantas familias confían en nosotros.</p>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p>Teléfono: 55-1234-5678<br>
+       WhatsApp: 55-9876-5432<br>
+       Correo: contacto@veterinaria.mx<br>
+       Horarios: Lunes a domingo, 9:00 am – 9:00 pm</p>
+    <a href="#contacto" class="cta">Agenda tu cita ahora</a>
+  </section>
+
+  <section class="testimonios">
+    <h2>Testimonios</h2>
+    <blockquote>"Mi perrito Max recibió la mejor atención, los doctores son súper profesionales y cariñosos." – Cliente satisfecho</blockquote>
+    <blockquote>"La clínica siempre está limpia y el trato es excelente. Recomiendo 100%." – Cliente satisfecho</blockquote>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Veterinaria Mi Mascota</p>
+    <p>
+      <a href="#">Inicio</a> | 
+      <a href="#">Servicios</a> | 
+      <a href="#">Contacto</a> | 
+      <a href="#">Ubicación</a>
+    </p>
+    <p>Síguenos en: <a href="#">Facebook</a> <a href="#">Instagram</a> <a href="#">TikTok</a></p>
+  </footer>
+
+</html>
