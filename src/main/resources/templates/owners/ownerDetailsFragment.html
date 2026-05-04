@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<div th:fragment="ownerDetailsFragment">
+
+  <div class="owner-panel">
+    <div class="owner-header">
+      <h3 id="od-name">Nombre</h3>
+      <div class="owner-actions">
+        <a id="od-edit" class="btn btn-sm btn-outline-primary" href="#">Editar</a>
+        <a id="od-add-pet" class="btn btn-sm btn-outline-primary" href="#">Agregar Mascota</a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <dl>
+          <dt>Dirección:</dt>
+          <dd id="od-address">-</dd>
+          <dt>Teléfono:</dt>
+          <dd id="od-telephone">-</dd>
+          <dt>Email:</dt>
+          <dd id="od-email">-</dd>
+        </dl>
+      </div>
+      <div class="col-6">
+        <h5>Mascotas</h5>
+        <ul id="od-pets" class="list-group">
+        </ul>
+      </div>
+    </div>
+
+    <div class="visits-section">
+      <h5>Historial de Visitas</h5>
+      <ul id="od-visits" class="list-group">
+      </ul>
+    </div>
+  </div>
+
+</div>

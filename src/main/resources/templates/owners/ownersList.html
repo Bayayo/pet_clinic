@@ -4,9 +4,18 @@
 
 <body>
 
-  <h2 th:text="#{owners}">Owners</h2>
+  <div class="owners-page">
+    <div class="owners-top">
+      <h2 th:text="# {owners}">Owners</h2>
+      <div class="owners-search">
+        <input id="owner-search" class="form-control" placeholder="Buscar..." />
+        <a th:href="@{/owners/new}" class="btn btn-primary ms-2">+ Agregar Propietario</a>
+      </div>
+    </div>
 
-  <table id="owners" class="table table-striped">
+    <div class="row">
+      <div class="col-md-7">
+        <table id="owners" class="table table-striped">
     <thead>
       <tr>
         <th th:text="#{name}" style="width: 150px;">Name</th>
@@ -19,7 +28,7 @@
     <tbody>
       <tr th:each="owner : ${listOwners}">
         <td>
-          <a th:href="@{/owners/__${owner.id}__}" th:text="${owner.firstName + ' ' + owner.lastName}" /></a>
+          <a th:href="@{/owners/__${owner.id}__}" th:attr="data-owner-id=${owner.id}" class="owner-link" th:text="${owner.firstName + ' ' + owner.lastName}"></a>
         </td>
         <td th:text="${owner.address}" />
         <td th:text="${owner.city}" />
@@ -27,8 +36,8 @@
         <td><span th:text="${#strings.listJoin(owner.pets, ', ')}" /></td>
       </tr>
     </tbody>
-  </table>
-  <div th:if="${totalPages > 1}">
+      </table>
+      <div th:if="${totalPages > 1}">
     <span th:text="#{pages}">Pages:</span>
     <span>[</span>
     <span th:each="i: ${#numbers.sequence(1, totalPages)}">
@@ -55,7 +64,67 @@
         class="fa fa-fast-forward"></a>
       <span th:unless="${currentPage < totalPages}" th:title="#{last}" class="fa fa-fast-forward"></span>
     </span>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div id="owner-details-container" th:insert="~{owners/ownerDetailsFragment :: ownerDetailsFragment}">
+        </div>
+      </div>
+    </div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      function loadOwner(id) {
+        fetch('/owners/' + id + '/json')
+          .then(function (r) { if (!r.ok) throw new Error('Not found'); return r.json(); })
+          .then(function (owner) {
+            document.getElementById('od-name').textContent = owner.firstName + ' ' + owner.lastName;
+            document.getElementById('od-address').textContent = owner.address || '';
+            document.getElementById('od-telephone').textContent = owner.telephone || '';
+            document.getElementById('od-email').textContent = owner.email || '';
+            var petsEl = document.getElementById('od-pets');
+            petsEl.innerHTML = '';
+            if (owner.pets) {
+              owner.pets.forEach(function (p) {
+                var li = document.createElement('li');
+                li.className = 'list-group-item';
+                li.textContent = p.name + ' (' + (p.type ? p.type.name : '') + ')';
+                petsEl.appendChild(li);
+              });
+            }
+            var visitsEl = document.getElementById('od-visits');
+            visitsEl.innerHTML = '';
+            if (owner.pets) {
+              owner.pets.forEach(function (p) {
+                if (p.visits) {
+                  p.visits.forEach(function (v) {
+                    var li = document.createElement('li');
+                    li.className = 'list-group-item';
+                    li.textContent = (v.date ? v.date : '') + ' - ' + (v.description || '');
+                    visitsEl.appendChild(li);
+                  });
+                }
+              });
+            }
+          })
+          .catch(function (e) {
+            console.warn('Owner load failed', e);
+          });
+      }
+
+      document.querySelectorAll('.owner-link').forEach(function (el) {
+        el.addEventListener('click', function (ev) {
+          // allow normal navigation with ctrl/cmd click
+          if (ev.metaKey || ev.ctrlKey) return;
+          ev.preventDefault();
+          var id = el.getAttribute('data-owner-id');
+          if (id) loadOwner(id);
+        });
+      });
+    });
+  </script>
 </body>
 
 </html>

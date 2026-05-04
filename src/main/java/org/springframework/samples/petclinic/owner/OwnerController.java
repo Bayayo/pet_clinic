@@ -33,6 +33,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.http.ResponseEntity;
 
 import jakarta.validation.Valid;
 
@@ -171,6 +173,13 @@ class OwnerController {
 				"Owner not found with id: " + ownerId + ". Please ensure the ID is correct "));
 		mav.addObject(owner);
 		return mav;
+	}
+
+	@GetMapping("/owners/{ownerId}/json")
+	@ResponseBody
+	public ResponseEntity<Owner> ownerJson(@PathVariable("ownerId") int ownerId) {
+		Optional<Owner> optionalOwner = this.owners.findById(ownerId);
+		return optionalOwner.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
 	}
 
 }
